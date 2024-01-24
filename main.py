@@ -1,5 +1,6 @@
 import turtle
 import time
+from serpiente import Serpiente 
 
 POSICIONES_INICIALES = [(0, 0), (-20, 0), (-40, 0)]
 
@@ -11,24 +12,25 @@ ventana.bgcolor("red")
 ventana.tracer(0)
 
 # Crear la serpiente
-segmentos = []
-for posicion in POSICIONES_INICIALES:
-  nuevo_segmento = turtle.Turtle("square")
-  nuevo_segmento.penup()
-  nuevo_segmento.goto(posicion)
-  segmentos.append(nuevo_segmento)
+serpiente = Serpiente()
 
-# Bucle principal (main loop)
+# Configurar los listeners
+ventana.listen()
+ventana.onkey(serpiente.derecha,"Right")
+ventana.onkey(serpiente.arriba,"Up")
+ventana.onkey(serpiente.izquierda,"Left")
+ventana.onkey(serpiente.abajo,"Down")
+
+
 jugando = True
 
+# Bucle principal (main loop)
 while jugando:
   ventana.update()
   time.sleep(0.1)
 
   # Mover la serpiente
-  for seg in segmentos:
-    seg.forward(20)
-
+  serpiente.mover()
 
 ventana.exitonclick()
 
