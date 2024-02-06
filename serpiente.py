@@ -15,27 +15,28 @@ class Serpiente:
       nuevo_segmento.penup()
       nuevo_segmento.goto(posicion)
       self.segmentos.append(nuevo_segmento)
+    self.cabeza = self.segmentos[0]
 
 
   def mover(self):
     for seg_num in range(len(self.segmentos)-1, 0, -1):
       nueva_pos = self.segmentos[seg_num-1].pos()
       self.segmentos[seg_num].goto(nueva_pos)
-    self.segmentos[0].forward(20)
+    self.cabeza.forward(20)
 
   def derecha(self):
-    if self.segmentos[0].heading() != IZQUIERDA:
-      self.segmentos[0].setheading(DERECHA)
+    if self.cabeza.heading() != IZQUIERDA:
+      self.cabeza.setheading(DERECHA)
 
   def arriba(self): 
-    if self.segmentos[0].heading() != ABAJO:
-      self.segmentos[0].setheading(ARRIBA)
+    if self.cabeza.heading() != ABAJO:
+      self.cabeza.setheading(ARRIBA)
 
   def izquierda(self):
-    if self.segmentos[0].heading() != DERECHA:
-      self.segmentos[0].setheading(IZQUIERDA)
+    if self.cabeza.heading() != DERECHA:
+      self.cabeza.setheading(IZQUIERDA)
 
   def abajo(self):
-    if self.segmentos[0].heading() != ARRIBA:
-      self.segmentos[0].setheading(ABAJO)
+    if self.cabeza.heading() != ARRIBA:
+      self.cabeza.setheading(ABAJO)
       
