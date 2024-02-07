@@ -1,5 +1,6 @@
 import turtle
 import time
+import os
 from serpiente import Serpiente 
 from comida import Comida
 
@@ -10,11 +11,14 @@ ventana = turtle.Screen()
 ventana.setup(600, 600)
 ventana.bgcolor("red")
 
+# Registrar todos los sprites
+for filename in os.listdir('gifs/'):
+  ventana.addshape('gifs/' + filename)
+
 ventana.tracer(0)
 
-# Crear la serpiente
+# Crear los objetos
 serpiente = Serpiente()
-### crear comida
 comida = Comida()
 
 # Configurar los listeners
