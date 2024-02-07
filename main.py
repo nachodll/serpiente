@@ -4,12 +4,10 @@ import os
 from serpiente import Serpiente 
 from comida import Comida
 
-POSICIONES_INICIALES = [(0, 0), (-20, 0), (-40, 0)]
-
 # Crear la ventana
 ventana = turtle.Screen()
 ventana.setup(600, 600)
-ventana.bgcolor("red")
+ventana.bgpic('gifs/dirt.gif')
 
 # Registrar todos los sprites
 for filename in os.listdir('gifs/'):
@@ -19,6 +17,7 @@ ventana.tracer(0)
 
 # Crear los objetos
 serpiente = Serpiente()
+print(serpiente.cabeza.shape())
 comida = Comida()
 
 # Configurar los listeners
@@ -42,6 +41,7 @@ while jugando:
   # Detectar colision con comida
   if serpiente.cabeza.distance(comida) < 25:
     comida.actualizar()
+    serpiente.extender()
 
 ventana.exitonclick()
 
