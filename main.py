@@ -2,8 +2,7 @@ import turtle
 import time
 from serpiente import Serpiente 
 from comida import Comida
-
-POSICIONES_INICIALES = [(0, 0), (-20, 0), (-40, 0)]
+from puntuacion import Puntuacion
 
 # Crear la ventana
 ventana = turtle.Screen()
@@ -14,8 +13,8 @@ ventana.tracer(0)
 
 # Crear la serpiente
 serpiente = Serpiente()
-### crear comida
 comida = Comida()
+puntuacion = Puntuacion()
 
 # Configurar los listeners
 ventana.listen()
@@ -38,6 +37,12 @@ while jugando:
   # Detectar colision con comida
   if serpiente.cabeza.distance(comida) < 25:
     comida.actualizar()
+    puntuacion.incrementar_puntuacion()
+
+  # Detectar colision
+  if serpiente.cabeza.xcor() > 280 or serpiente.cabeza.xcor() < -280 or serpiente.cabeza.ycor() > 280 or serpiente.cabeza.ycor() < -280:
+        puntuacion.game_over()
+        jugando = False
 
 ventana.exitonclick()
 
