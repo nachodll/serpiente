@@ -38,6 +38,7 @@ while jugando:
   if serpiente.cabeza.distance(comida) < 25:
     comida.actualizar()
     puntuacion.incrementar_puntuacion()
+    serpiente.crecer()
 
   # Detectar colision
   if serpiente.cabeza.xcor() > 280 or serpiente.cabeza.xcor() < -280 or serpiente.cabeza.ycor() > 280 or serpiente.cabeza.ycor() < -280:

@@ -11,12 +11,18 @@ class Serpiente:
   def __init__(self):
     self.segmentos = []
     for posicion in POSICIONES_INICIALES:
-      nuevo_segmento = turtle.Turtle("square")
-      nuevo_segmento.penup()
-      nuevo_segmento.goto(posicion)
-      self.segmentos.append(nuevo_segmento)
+      self.aniadir_segmento(posicion)
     self.cabeza = self.segmentos[0]
 
+  def crecer(self):
+    nueva_pos = self.segmentos[-1].pos()
+    self.aniadir_segmento(nueva_pos)
+
+  def aniadir_segmento(self, posicion):
+    nuevo_segmento = turtle.Turtle("square")
+    nuevo_segmento.penup()
+    nuevo_segmento.goto(posicion)
+    self.segmentos.append(nuevo_segmento)
 
   def mover(self):
     for seg_num in range(len(self.segmentos)-1, 0, -1):

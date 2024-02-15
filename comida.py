@@ -11,6 +11,6 @@ class Comida(turtle.Turtle):
     self.actualizar()
 
   def actualizar (self):
-    new_x = random.randint(-300, 300)
-    new_y = random.randint(-300, 300)
+    new_x = random.randint(-280, 280)
+    new_y = random.randint(-280, 280)
     self.goto(new_x, new_y)
