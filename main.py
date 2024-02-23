@@ -40,10 +40,17 @@ while jugando:
     puntuacion.incrementar_puntuacion()
     serpiente.crecer()
 
-  # Detectar colision
+  # Detectar colision con las paredes
   if serpiente.cabeza.xcor() > 280 or serpiente.cabeza.xcor() < -280 or serpiente.cabeza.ycor() > 280 or serpiente.cabeza.ycor() < -280:
-        puntuacion.game_over()
-        jugando = False
+    puntuacion.game_over()
+    jugando = False
+
+  # Detectar colision con el cuerpo 
+  for segmento in serpiente.segmentos:
+     if segmento != serpiente.cabeza:
+      if serpiente.cabeza.distance(segmento) < 20:
+          jugando = False
+          puntuacion = puntuacion.game_over()
 
 ventana.exitonclick()
 
