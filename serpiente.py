@@ -13,6 +13,7 @@ class Serpiente:
     for posicion in POSICIONES_INICIALES:
       self.aniadir_segmento(posicion)
     self.cabeza = self.segmentos[0]
+    self.puede_girar = True
 
   def crecer(self):
     nueva_pos = self.segmentos[-1].pos()
@@ -29,20 +30,25 @@ class Serpiente:
       nueva_pos = self.segmentos[seg_num-1].pos()
       self.segmentos[seg_num].goto(nueva_pos)
     self.cabeza.forward(20)
+    self.puede_girar = True
 
   def derecha(self):
-    if self.cabeza.heading() != IZQUIERDA:
+    if self.cabeza.heading() != IZQUIERDA and self.puede_girar:
       self.cabeza.setheading(DERECHA)
+    self.puede_girar = False
 
   def arriba(self): 
-    if self.cabeza.heading() != ABAJO:
+    if self.cabeza.heading() != ABAJO and self.puede_girar:
       self.cabeza.setheading(ARRIBA)
+    self.puede_girar = False
 
   def izquierda(self):
-    if self.cabeza.heading() != DERECHA:
+    if self.cabeza.heading() != DERECHA and self.puede_girar:
       self.cabeza.setheading(IZQUIERDA)
+    self.puede_girar = False
 
   def abajo(self):
-    if self.cabeza.heading() != ARRIBA:
+    if self.cabeza.heading() != ARRIBA and self.puede_girar:
       self.cabeza.setheading(ABAJO)
+    self.puede_girar = False
       
