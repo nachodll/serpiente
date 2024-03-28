@@ -1,5 +1,6 @@
 import turtle
 import time
+import os
 from serpiente import Serpiente 
 from comida import Comida
 from puntuacion import Puntuacion
@@ -7,11 +8,15 @@ from puntuacion import Puntuacion
 # Crear la ventana
 ventana = turtle.Screen()
 ventana.setup(600, 600)
-ventana.bgcolor("red")
+ventana.bgpic('gifs/dirt.gif')
+
+# Registrar todos los sprites
+for filename in os.listdir('gifs/'):
+  ventana.addshape('gifs/' + filename)
 
 ventana.tracer(0)
 
-# Crear la serpiente
+# Crear los objetos
 serpiente = Serpiente()
 comida = Comida()
 puntuacion = Puntuacion()
